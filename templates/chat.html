@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Healthcare Diagnosis Assistant</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+<body>
+
+    <!-- Background -->
+
+    <div class="bg-circle bg1"></div>
+    <div class="bg-circle bg2"></div>
+    <div class="bg-circle bg3"></div>
+
+    <!-- Navbar -->
+
+    <header class="navbar">
+
+        <div class="logo">
+
+            <i class="fa-solid fa-heart-pulse"></i>
+
+            <span>VitalCare</span>
+
+        </div>
+
+        <div class="status">
+
+            <span class="online-dot"></span>
+
+            <span>AI Online</span>
+
+        </div>
+
+    </header>
+
+    <!-- Hero -->
+
+    <section class="hero">
+
+        <h1>
+
+            AI Healthcare Diagnosis Assistant
+
+        </h1>
+
+        <p>
+
+           "Health is not just the absence of illness—it is a state of complete physical, mental, and social well-being."
+— World Health Organization (WHO)
+
+        </p>
+
+    </section>
+
+    <!-- Chat Wrapper -->
+
+    <section class="chat-wrapper">
+
+        <div class="chat-container">
+
+            <!-- Header -->
+
+            <div class="chat-header">
+
+                <div class="chat-title">
+
+                    <i class="fa-solid fa-user-doctor"></i>
+
+                    <div>
+
+                        <h3>
+
+                            Medical AI Assistant
+
+                        </h3>
+
+                        <p>
+
+                            Ask medical questions,
+                            symptoms,
+                            diseases,
+                            medicines,
+                            and treatments.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <button id="newChatBtn">
+
+                    <i class="fa-solid fa-plus"></i>
+
+                    New Chat
+
+                </button>
+
+            </div>
+
+            <!-- Welcome Screen -->
+
+            <div class="welcome-screen" id="welcomeScreen">
+
+                <div class="welcome-icon">
+
+                    <i class="fa-solid fa-heart-pulse"></i>
+
+                </div>
+
+                <h2>
+
+                    Welcome!
+
+                </h2>
+
+                <p>
+
+                    Ask your first healthcare question
+                    to begin chatting with your AI assistant.
+
+                </p>
+
+            </div>
+
+            <!-- Chat Messages -->
+
+            <div class="chat-body" id="chatBody">
+
+            </div>
+
+            <!-- Typing -->
+
+            <div class="typing" id="typingIndicator">
+
+                <div class="typing-left">
+
+                    <i class="fa-solid fa-robot"></i>
+
+                </div>
+
+                <div class="typing-right">
+
+                    <h4>AI is thinking...</h4>
+
+                    <p id="typingStatus">
+
+                        Searching medical knowledge...
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <!-- Suggestions -->
+
+            <div class="suggestions">
+
+                <button class="suggestion">
+
+                    What are the symptoms of Diabetes?
+
+                </button>
+
+                <button class="suggestion">
+
+                    Causes of High Blood Pressure
+
+                </button>
+
+                <button class="suggestion">
+
+                    Treatment for Acne
+
+                </button>
+
+                <button class="suggestion">
+
+                    Symptoms of Dengue
+
+                </button>
+
+            </div>
+
+            <!-- Input -->
+
+            <div class="chat-input">
+
+                <input id="userInput" type="text" placeholder="Ask your healthcare question..." autocomplete="off">
+
+                <button id="sendBtn">
+
+                    <i class="fa-solid fa-paper-plane"></i>
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- Features -->
+
+    <section class="features">
+
+        <div class="feature-card">
+
+            <i class="fa-solid fa-brain"></i>
+
+            <h3>Symptom Checker</h3>
+
+            <p>
+                Understand common symptoms and their possible causes.
+            </p>
+
+        </div>
+
+        <div class="feature-card">
+
+            <i class="fa-solid fa-shield-heart"></i>
+
+            <h3>Medication Information</h3>
+
+            <p>
+                Learn about medicines, their uses, and important precautions.
+            </p>
+
+        </div>
+
+        <div class="feature-card">
+
+            <i class="fa-solid fa-bolt"></i>
+
+            <h3>Disease & Treatment Guide</h3>
+
+            <p>
+                Explore health conditions, available treatments, and recovery information.
+            </p>
+
+        </div>
+
+        <div class="feature-card">
+
+            <i class="fa-solid fa-lock"></i>
+
+            <h3>Preventive Care</h3>
+
+            <p>
+                Discover healthy habits, vaccinations, and preventive measures to support overall well-being.
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- Footer -->
+
+    <footer class="footer">
+
+        <div class="footer-content">
+
+            <h3>
+
+                AI Healthcare Diagnosis Assistant
+
+            </h3>
+
+            <p>
+
+                "Your health is your greatest asset—protect it with awareness, prevention, and timely care."
+
+            </p>
+
+            <div class="footer-icons">
+
+                <i class="fa-solid fa-heart-pulse"></i>
+
+                <i class="fa-solid fa-user-doctor"></i>
+
+                <i class="fa-solid fa-stethoscope"></i>
+
+                <i class="fa-solid fa-notes-medical"></i>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+    <!-- Chat JavaScript -->
+
+    <script src="{{ url_for('static', filename='chat.js') }}">
+    </script>
+
+</body>
+
+</html>
