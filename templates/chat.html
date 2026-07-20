@@ -8,7 +8,7 @@
 
     <title>AI Healthcare Diagnosis Assistant</title>
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
 
@@ -202,18 +202,38 @@
             </div>
 
             <!-- Input -->
+             
+            
+        <div class="chat-input">
+            
+            
+            <input id="userInput" type="text" placeholder="Ask your healthcare question..." autocomplete="off">
+            
+            <button id="sendBtn">
+                
+                <i class="fa-solid fa-paper-plane"></i>
+            
+            </button>
 
-            <div class="chat-input">
+        </div>
 
-                <input id="userInput" type="text" placeholder="Ask your healthcare question..." autocomplete="off">
+<!-- Chat Actions -->
 
-                <button id="sendBtn">
+        <div class="chat-actions">
+            
+            <button id="saveConversationBtn" class="save-btn">
+                
+                <i class="fa-solid fa-floppy-disk"></i>
+                Save Consultation
+            </button>
+            
+            <button id="clearChatBtn" class="clear-btn">
+                
+                <i class="fa-solid fa-trash"></i>
+                Clear Chat
+            </button>
 
-                    <i class="fa-solid fa-paper-plane"></i>
-
-                </button>
-
-            </div>
+</div>
 
         </div>
 
@@ -311,7 +331,7 @@
 
     <!-- Chat JavaScript -->
 
-    <script src="{{ url_for('static', filename='chat.js') }}">
+    <script src="{{ url_for('static', filename='js/chat.js') }}"></script>
     </script>
 
 </body>
