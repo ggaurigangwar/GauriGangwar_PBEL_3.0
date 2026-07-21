@@ -1,291 +1,247 @@
-# 🩺 AI Healthcare Diagnosis Assistant
+# 🩺 VitaCare – AI Healthcare Diagnosis Assistant
 
-An AI-powered Healthcare Diagnosis Assistant built using **Flask**, **LangChain**, **Pinecone**, **Ollama (Llama 3)**, and **Retrieval-Augmented Generation (RAG)**. The application enables users to ask medical questions, receive AI-assisted responses based on a medical knowledge base, manage their health profile, and save consultation history.
+VitaCare is a modern AI-powered healthcare diagnosis assistant designed to provide users with an intuitive and visually appealing experience while interacting with an intelligent medical consultation system.
 
-> **Disclaimer:** This application is designed for educational and informational purposes only. It is **not** a substitute for professional medical advice, diagnosis, or treatment.
-
----
-
-# 📌 Table of Contents
-
-- Features
-- Tech Stack
-- System Architecture
-- Project Structure
-- Installation
-- Configuration
-- How to Run
-- Application Workflow
-- Screenshots
-- Future Enhancements
-- Author
-- License
+The application combines a clean healthcare-inspired interface with AI-driven diagnosis capabilities to make preliminary health assessments more accessible and user-friendly.
 
 ---
 
 # ✨ Features
 
-### 👤 User Management
-- User Registration
-- Secure Login & Logout
-- Password Encryption using Bcrypt
-
-### 🩺 Patient Profile
-- Personal Health Profile
-- Height & Weight
-- Blood Group
-- Existing Diseases
-- Allergies
-- Current Medications
-
-### 🤖 AI Healthcare Chatbot
-- AI-powered medical conversations
-- Personalized responses using patient profile
-- Context-aware healthcare assistance
-- Medical knowledge retrieval using RAG
-
-### 📚 Retrieval-Augmented Generation (RAG)
-- Medical knowledge base
-- HuggingFace Embeddings
-- Pinecone Vector Database
-- LangChain Retrieval Pipeline
-
-### 💬 Consultation Management
-- Save complete consultations
-- View consultation history
-- Medical question-based consultation titles
-
-### ⚡ User Experience
-- Streaming AI responses
-- Modern responsive interface
-- Greeting detection
-- Interactive chat experience
+## 🏥 Modern Healthcare Dashboard
+- Premium healthcare-inspired UI
+- Soft pastel gradients
+- Clean and minimal layout
+- Fully responsive design
+- Glassmorphism-inspired cards
+- Rounded modern components
+- Smooth hover animations
 
 ---
 
-# 🛠 Tech Stack
+## 🤖 AI Healthcare Assistant
+- AI-powered medical consultation
+- Symptom-based diagnosis
+- Intelligent health recommendations
+- User-friendly chat interface
+- Secure interaction workflow
+
+---
+
+## 📊 Dashboard Sections
+
+### Hero Section
+- Large welcome banner
+- Healthcare-themed pastel gradient
+- Clear call-to-action
+- Modern typography
+
+---
+
+### Accuracy Timeline
+Displays the AI diagnosis workflow:
+
+- Symptom Collection
+- AI Analysis
+- Medical Knowledge Processing
+- Diagnosis Generation
+- Recommendation Delivery
+
+Features:
+- Interactive timeline cards
+- Hover animations
+- Soft glow effects
+- Glassmorphism styling
+
+---
+
+### Our Commitment
+
+Highlights the platform's core values:
+
+- Privacy First
+- Accurate Analysis
+- Trusted AI Assistance
+- Secure Healthcare Experience
+
+---
+
+### FAQ Section
+
+Provides answers to common questions regarding:
+
+- AI diagnosis
+- Privacy
+- Medical recommendations
+- Consultation workflow
+
+---
+
+### Footer
+
+- Healthcare-inspired design
+- Soft gradient background
+- Responsive layout
+- Modern minimal styling
+
+---
+
+# 🎨 UI Design System
+
+## Color Palette
+
+Primary Colors
+
+- Soft Blue
+- Pastel Sky Blue
+- Healthcare White
+- Soft Pink Accent
+
+Gradient Theme
+
+- Light Blue
+- Sky Blue
+- White
+- Soft Pink
+
+The dashboard follows a consistent pastel healthcare design language across all sections.
+
+---
+
+# 💻 Technologies Used
 
 ## Frontend
 
 - HTML5
 - CSS3
 - JavaScript
-- Bootstrap 5
+- Font Awesome Icons
+- Google Fonts (Manrope & Inter)
 
 ## Backend
 
 - Python
 - Flask
-- Flask Login
-- SQLAlchemy
-- SQLite
 
-## Artificial Intelligence
+## AI & Machine Learning
 
 - LangChain
-- Ollama (Llama 3)
+- Hugging Face Embeddings
 - Pinecone Vector Database
-- HuggingFace Embeddings
 - Retrieval-Augmented Generation (RAG)
-
----
-
-# 🏗 System Architecture
-
-```
-                    User
-
-                      │
-                      ▼
-
-             Flask Web Application
-
-                      │
-        ┌─────────────┴─────────────┐
-        │                           │
-        ▼                           ▼
-
- User Authentication         Patient Profile
-
-                      │
-                      ▼
-
-             Chat Management
-
-                      │
-                      ▼
-
-          Retrieval-Augmented Generation
-
-          ┌────────────┴─────────────┐
-          │                          │
-
-     Pinecone Vector DB       Medical Knowledge Base
-
-                      │
-                      ▼
-
-                Llama 3 (Ollama)
-
-                      │
-                      ▼
-
-               AI Medical Response
-```
 
 ---
 
 # 📂 Project Structure
 
 ```
-AI-Healthcare-Diagnosis-Assistant-Project/
-
-│
-├── app.py
-├── models.py
-├── extensions.py
-├── requirements.txt
-├── config.py
-│
-├── routes/
-│   ├── auth.py
-│   ├── chatbot.py
-│   ├── dashboard.py
-│   └── profile.py
-│
-├── src/
-│   ├── agents/
-│   ├── chat_manager.py
-│   ├── helper.py
-│   ├── memory.py
-│   ├── prompt.py
-│   └── response_formatter.py
+VitaCare/
 │
 ├── static/
 │   ├── css/
+│   │   ├── dashboard.css
+│   │   ├── accuracy.css
+│   │   ├── commitment.css
+│   │   ├── faq.css
+│   │   └── footer.css
+│   │
 │   ├── js/
-│   └── assets/
+│   └── images/
 │
 ├── templates/
+│   ├── dashboard.html
+│   ├── login.html
+│   ├── signup.html
+│   ├── history.html
+│   └── profile.html
 │
-├── instance/
-│
-├── README.md
-└── requirements.txt
+├── app.py
+├── requirements.txt
+└── README.md
 ```
 
 ---
 
-# ⚙ Installation
+# 🚀 Installation
 
-## Clone the Repository
-
-```bash
-git clone https://github.com/ggaurigangwar/AI-Healthcare-Diagnosis-Assistant.git
-```
-
-## Navigate to Project
+Clone the repository
 
 ```bash
-cd AI-Healthcare-Diagnosis-Assistant
+git clone https://github.com/your-username/VitaCare.git
 ```
 
-## Create Virtual Environment
+Move into the project directory
 
 ```bash
-python -m venv .venv
+cd VitaCare
 ```
 
-## Activate Environment
-
-### Windows
+Create a virtual environment
 
 ```bash
-.venv\Scripts\activate
+python -m venv venv
 ```
 
-### Linux / macOS
+Activate the environment
+
+Windows
 
 ```bash
-source .venv/bin/activate
+venv\Scripts\activate
 ```
 
-## Install Dependencies
+Linux / macOS
+
+```bash
+source venv/bin/activate
+```
+
+Install dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
----
-
-# ⚙ Configuration
-
-Create a `.env` file and configure your environment variables.
-
-Example:
-
-```env
-PINECONE_API_KEY=YOUR_API_KEY
-PINECONE_INDEX_NAME=medical-chatbot
-```
-
-Make sure:
-
-- Ollama is installed
-- Llama 3 model is downloaded
-- Pinecone index is created
-- HuggingFace embeddings are configured
-
----
-
-# ▶ Run the Application
+Run the application
 
 ```bash
 python app.py
 ```
 
-Open your browser:
+---
 
-```
-http://127.0.0.1:5000
-```
+# 🌟 UI Highlights
+
+- Healthcare-inspired premium interface
+- Soft blue and pastel gradient backgrounds
+- Rounded cards with glassmorphism effects
+- Consistent design hierarchy
+- Interactive hover animations
+- Responsive layout for multiple devices
+- Accessible typography and spacing
 
 ---
 
-# 🔄 Application Workflow
+# 🔒 Privacy
 
-1. User registers or logs in.
-2. User completes their health profile.
-3. User asks a medical question.
-4. Relevant medical documents are retrieved from Pinecone.
-5. LangChain combines retrieved knowledge with the user's query.
-6. Llama 3 generates a context-aware medical response.
-7. User receives a streamed AI response.
-8. Consultation can be saved and viewed later.
-
+VitaCare prioritizes user privacy by securely handling health-related interactions. The AI assistant is designed to provide preliminary insights and should not replace professional medical advice.
 
 ---
 
+# 📈 Future Enhancements
 
-# 📚 Learning Outcomes
-
-Through this project, I gained practical experience in:
-
-- Flask Web Development
-- Authentication & Authorization
-- LangChain Framework
-- Retrieval-Augmented Generation (RAG)
-- Vector Databases (Pinecone)
-- Prompt Engineering
-- Large Language Models (LLMs)
-- REST APIs
-- Database Design
-- Frontend Development
-- Git & GitHub
+- Voice-based consultation
+- Medical report upload
+- PDF diagnosis reports
+- Doctor appointment integration
+- Medicine recommendation system
+- Health history tracking
+- Dark mode support
+- Multi-language support
 
 ---
 
-# 👩‍💻 Author
+# 👩‍💻 Developer
 
 **Gauri Gangwar**
 
@@ -293,17 +249,14 @@ B.Tech Computer Science Engineering
 
 AI & Machine Learning Enthusiast
 
-GitHub:
-https://github.com/ggaurigangwar
-
-
+Focused on building intelligent healthcare solutions powered by Artificial Intelligence.
 
 ---
 
-# 📄 License
+# 📜 License
 
 This project is licensed under the MIT License.
 
 ---
 
-## ⭐ If you found this project helpful, consider giving it a star on GitHub!
+⭐ If you found this project useful, consider giving it a star on GitHub.

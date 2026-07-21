@@ -1,0 +1,201 @@
+/* ==========================================
+   COMMITMENT SECTION
+========================================== */
+
+.commitment-section{
+
+    margin:70px 0;
+
+    padding:70px 60px;
+
+    border-radius:28px;
+
+    background:linear-gradient(
+        135deg,
+        #E2F0FF 0%,
+        #EEF7FF 35%,
+        #F8FCFF 70%,
+        #FFF9FC 100%
+    );
+
+    border:1px solid rgba(37,99,235,.06);
+
+    box-shadow:
+        0 14px 38px rgba(37,99,235,.06);
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+/* Decorative Background */
+
+.commitment-section::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:300px;
+    height:300px;
+
+    top:-100px;
+    right:-80px;
+
+    border-radius:50%;
+
+    background:#D8EBFF;
+
+    filter:blur(110px);
+
+    opacity:.55;
+
+    pointer-events:none;
+}
+
+.commitment-section::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:240px;
+    height:240px;
+
+    bottom:-80px;
+    left:-80px;
+
+    border-radius:50%;
+
+    background:#FFEAF5;
+
+    filter:blur(100px);
+
+    opacity:.5;
+
+    pointer-events:none;
+}
+
+.commitment-container{
+
+    position:relative;
+
+    z-index:2;
+
+    max-width:900px;
+
+    margin:auto;
+
+    text-align:center;
+}
+
+.commitment-container h2{
+
+    font-family:"Manrope",sans-serif;
+
+    font-size:42px;
+
+    font-weight:800;
+
+    color:#0F172A;
+
+    margin:18px 0;
+}
+
+.commitment-container p{
+
+    max-width:720px;
+
+    margin:0 auto 40px;
+
+    font-size:16px;
+
+    line-height:1.9;
+
+    color:#64748B;
+}
+
+/* Feature Pills */
+
+.commitment-features{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:18px;
+
+    flex-wrap:wrap;
+}
+
+.feature-pill{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:14px 22px;
+
+    border-radius:999px;
+
+    background:#FFFFFF;
+
+    border:1px solid rgba(37,99,235,.08);
+
+    color:#0F172A;
+
+    font-weight:600;
+
+    box-shadow:0 8px 20px rgba(15,23,42,.04);
+
+    transition:.3s ease;
+}
+
+.feature-pill:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:0 15px 35px rgba(37,99,235,.10);
+}
+
+.feature-pill i{
+
+    color:#2563EB;
+
+    font-size:16px;
+}
+
+/* Responsive */
+
+@media(max-width:768px){
+
+    .commitment-section{
+
+        padding:50px 25px;
+    }
+
+    .commitment-container h2{
+
+        font-size:34px;
+    }
+
+    .commitment-container p{
+
+        font-size:15px;
+    }
+
+    .commitment-features{
+
+        gap:12px;
+    }
+
+    .feature-pill{
+
+        width:100%;
+
+        justify-content:center;
+    }
+
+}

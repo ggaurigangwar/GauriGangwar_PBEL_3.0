@@ -1,0 +1,480 @@
+:root{
+
+    --primary:#2563EB;
+    --secondary:#14B8A6;
+    --accent:#8B5CF6;
+
+    --background:#F5F9FF;
+    --surface:#FFFFFF;
+
+    --text:#0F172A;
+    --text-light:#64748B;
+
+    --border:#E2E8F0;
+
+    --success:#10B981;
+    --danger:#EF4444;
+
+    --shadow:
+        0 12px 40px rgba(15,23,42,.08);
+
+}
+
+/* ===========================
+   Main Layout
+=========================== */
+
+body{
+    font-family: 'Inter', sans-serif;
+    background: var(--background);
+    color: var(--text);
+}
+
+.main-content{
+    margin-left:260px;
+    min-height:100vh;
+    background:var(--background);
+}
+
+/* ===========================
+   Sidebar
+=========================== */
+
+.sidebar{
+    position:fixed;
+    top:0;
+    left:0;
+    width:260px;
+    height:100vh;
+    background:#fff;
+    border-right:1px solid var(--border);
+    padding:30px 20px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    box-shadow:var(--shadow);
+    z-index:1000;
+}
+
+.sidebar-logo{
+    margin-bottom:40px;
+}
+
+.logo-text{
+    font-family:'Manrope',sans-serif;
+    font-size:30px;
+    font-weight:800;
+    color:var(--primary);
+    margin-bottom:5px;
+}
+
+.logo-subtitle{
+    color:var(--text-light);
+    font-size:14px;
+}
+
+.sidebar-menu{
+    list-style:none;
+    padding:0;
+    margin:0;
+}
+
+.sidebar-menu li{
+    margin-bottom:12px;
+}
+
+.sidebar-menu a{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    text-decoration:none;
+    color:var(--text);
+    padding:14px 18px;
+    border-radius:14px;
+    transition:.3s ease;
+    font-weight:500;
+}
+
+.sidebar-menu a:hover{
+    background:#EEF2FF;
+    color:var(--primary);
+}
+
+.sidebar-menu a.active{
+    background:var(--primary);
+    color:#fff;
+}
+
+.sidebar-menu i{
+    font-size:20px;
+}
+
+.sidebar-footer{
+    margin-top:auto;
+}
+
+.logout-btn{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    text-decoration:none;
+    color:#DC2626;
+    font-weight:600;
+}
+
+.logout-btn:hover{
+    color:#B91C1C;
+}
+
+
+/* ===========================
+   Navbar
+=========================== */
+
+.navbar{
+
+    margin-bottom:40px;
+
+    border-radius:18px;
+
+    border:1px solid var(--border);
+
+}
+
+.navbar h4{
+
+    font-family:'Manrope',sans-serif;
+
+    font-weight:700;
+
+}
+
+.navbar .btn{
+
+    border-radius:12px;
+
+    padding:10px 20px;
+
+}
+/* ===================================
+   HERO SECTION
+=================================== */
+
+.hero-section{
+
+    padding:70px 0;
+
+}
+
+.hero-card{
+
+    background:
+    linear-gradient(
+        135deg,
+        #2563eb,
+        #3b82f6,
+        #60a5fa
+    );
+
+    border-radius:36px;
+
+    padding:70px;
+
+    color:white;
+
+    text-align:center;
+
+    position:relative;
+
+    overflow:hidden;
+
+    box-shadow:
+    0 25px 60px rgba(37,99,235,.25);
+
+}
+
+.hero-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:260px;
+
+    height:260px;
+
+    background:rgba(255,255,255,.08);
+
+    border-radius:50%;
+
+    top:-120px;
+
+    right:-100px;
+
+}
+
+.hero-card::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:180px;
+
+    height:180px;
+
+    background:rgba(255,255,255,.06);
+
+    border-radius:50%;
+
+    bottom:-80px;
+
+    left:-60px;
+
+}
+
+.hero-welcome{
+
+    font-size:20px;
+
+    font-weight:600;
+
+    margin-top:25px;
+
+}
+
+.hero-title{
+
+    font-size:62px;
+
+    font-family:'Manrope';
+
+    font-weight:800;
+
+    margin:25px 0;
+
+    line-height:1.15;
+
+}
+
+.hero-description{
+
+    max-width:760px;
+
+    margin:auto;
+
+    font-size:19px;
+
+    line-height:1.8;
+
+    color:rgba(255,255,255,.9);
+
+}
+
+.hero-tags{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:18px;
+
+    margin-top:45px;
+
+    flex-wrap:wrap;
+
+}
+
+.hero-tags span{
+
+    background:rgba(255,255,255,.15);
+
+    backdrop-filter:blur(14px);
+
+    padding:14px 24px;
+
+    border-radius:40px;
+
+    border:1px solid rgba(255,255,255,.2);
+
+}
+
+.hero-background-circle{
+
+    position:absolute;
+
+    border-radius:50%;
+
+    filter:blur(60px);
+
+    opacity:.35;
+
+}
+
+.circle-1{
+
+    width:320px;
+
+    height:320px;
+
+    background:#7dd3fc;
+
+    top:-80px;
+
+    left:-80px;
+
+}
+
+.circle-2{
+
+    width:280px;
+
+    height:280px;
+
+    background:#c4b5fd;
+
+    bottom:-100px;
+
+    right:-80px;
+
+}
+
+/* ===================================
+   ACCURACY SECTION
+=================================== */
+
+/*=========================================
+        ACCURACY SECTION
+=========================================*/
+
+.accuracy-section{
+
+    padding:100px 0;
+
+    background:#ffffff;
+
+}
+
+.section-header{
+
+    max-width:760px;
+
+    margin:auto;
+
+}
+
+.section-badge{
+
+    display:inline-block;
+
+    background:#eef4ff;
+
+    color:#3b82f6;
+
+    padding:10px 24px;
+
+    border-radius:50px;
+
+    font-weight:600;
+
+    margin-bottom:20px;
+
+}
+
+.section-title{
+
+    font-family:'Manrope',sans-serif;
+
+    font-size:48px;
+
+    font-weight:800;
+
+    margin-bottom:20px;
+
+}
+
+.section-subtitle{
+
+    color:#6b7280;
+
+    font-size:18px;
+
+    line-height:1.8;
+
+}
+
+.feature-card{
+
+    display:flex;
+
+    align-items:flex-start;
+
+    gap:24px;
+
+    background:#ffffff;
+
+    border-radius:24px;
+
+    padding:35px;
+
+    border:1px solid #edf2f7;
+
+    box-shadow:0 12px 40px rgba(0,0,0,.05);
+
+    transition:.35s;
+
+    height:100%;
+
+}
+
+.feature-card:hover{
+
+    transform:translateY(-10px);
+
+    box-shadow:0 18px 45px rgba(59,130,246,.15);
+
+}
+
+.feature-icon{
+
+    width:70px;
+
+    height:70px;
+
+    border-radius:20px;
+
+    background:linear-gradient(135deg,#2563eb,#60a5fa);
+
+    color:white;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:28px;
+
+    flex-shrink:0;
+
+}
+
+.feature-card h4{
+
+    font-family:'Manrope',sans-serif;
+
+    font-size:24px;
+
+    margin-bottom:12px;
+
+}
+
+.feature-card p{
+
+    color:#6b7280;
+
+    line-height:1.8;
+
+    margin:0;
+
+}
