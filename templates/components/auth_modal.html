@@ -1,0 +1,314 @@
+<div class="auth-overlay" id="authOverlay">
+
+    <div class="auth-modal">
+
+        <!-- Close Button -->
+
+        <button class="close-modal" id="closeAuth">
+
+            <i class="bi bi-x-lg"></i>
+
+        </button>
+
+        <!-- Logo -->
+        <div class="text-center mb-4">
+
+            <h2>VitaCare AI</h2>
+
+            <p class="text-muted">
+                Personalized Healthcare Platform
+            </p>
+
+        </div>
+
+
+        <!-- Login Form -->
+
+        <div class="auth-content active" id="loginBox">
+
+            <h3>
+
+                Welcome Back 👋
+
+            </h3>
+
+            <p class="auth-subtitle">
+
+                Sign in to continue your healthcare journey.
+
+            </p>
+
+            <!-- Google -->
+
+            <button type="button" class="google-btn" disabled>
+
+                <img src="{{ url_for('static', filename='images/google.png') }}" class="google-icon" alt="Google">
+
+                Continue with Google
+                <span style="margin-left:8px;font-size:12px;color:#94A3B8;">
+                    (Coming Soon)
+                </span>
+
+            </button>
+
+            <!-- Divider -->
+
+            <div class="divider">
+
+                <span>
+
+                    OR
+
+                </span>
+
+            </div>
+
+            <!-- Flash Messages -->
+
+            {% with messages = get_flashed_messages(with_categories=true) %}
+
+            {% if messages %}
+
+            {% for category, message in messages %}
+
+            <div class="alert alert-{{ category }}">
+
+                {{ message }}
+
+            </div>
+
+            {% endfor %}
+
+            {% endif %}
+
+            {% endwith %}
+
+            <!-- Login Form -->
+
+            <form method="POST" action="{{ url_for('login') }}">
+
+                <div class="form-group">
+
+                    <label>
+
+                        Email Address
+
+                    </label>
+
+                    <input type="email" name="email" placeholder="Enter your email address" required>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>
+
+                        Password
+
+                    </label>
+
+                    <div class="password-wrapper">
+
+                        <input type="password" id="loginPassword" name="password" placeholder="Enter your password"
+                            required>
+
+                        <button type="button" class="toggle-password">
+
+                            <i class="bi bi-eye"></i>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <div class="login-options">
+
+                    <label>
+
+                        <input type="checkbox">
+
+                        Remember Me
+
+                    </label>
+
+                    <a href="#">
+
+                        Forgot Password?
+
+                    </a>
+
+                </div>
+
+                <button type="submit" class="auth-btn">
+
+                    Sign In
+
+                </button>
+
+            </form>
+
+            <div class="switch-form">
+
+                Don't have an account?
+
+                <button id="showSignup">
+
+                    Create Account
+
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- ================================================= -->
+
+        <!-- SIGNUP STARTS HERE -->
+        <!-- SIGNUP FORM -->
+
+        <div class="auth-content" id="signupBox">
+
+            <h3>
+
+                Create Your Account ✨
+
+            </h3>
+
+            <p class="auth-subtitle">
+
+                Create your account to begin your personalized healthcare journey.
+
+            </p>
+
+            <!-- Google Signup -->
+
+            <button type="button" class="google-btn" disabled>
+
+                <img src="{{ url_for('static', filename='images/google.png') }}" class="google-icon" alt="Google">
+
+                Continue with Google
+
+                <span style="margin-left:8px;font-size:12px;color:#94A3B8;">
+                    (Coming Soon)
+                </span>
+
+            </button>
+
+            <div class="divider">
+
+                <span>
+
+                    OR
+
+                </span>
+
+            </div>
+
+            <form method="POST" action="{{ url_for('signup') }}">
+
+                <div class="form-group">
+
+                    <label>
+
+                        Full Name
+
+                    </label>
+
+                    <input type="text" name="name" placeholder="Enter your full name" required>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>
+
+                        Email Address
+
+                    </label>
+
+                    <input type="email" name="email" placeholder="Enter your email address" required>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>
+
+                        Create a Password
+
+                    </label>
+
+                    <div class="password-wrapper">
+
+                        <input type="password" id="signupPassword" name="password" placeholder="Create a password"
+                            required>
+
+                        <button type="button" class="toggle-password">
+
+                            <i class="bi bi-eye"></i>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>
+
+                        Confirm Password
+
+                    </label>
+
+                    <div class="password-wrapper">
+
+                        <input type="password" id="confirmPassword" name="confirm_password"
+                            placeholder="Confirm your password" required>
+
+                        <button type="button" class="toggle-password">
+
+                            <i class="bi bi-eye"></i>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <button type="submit" class="auth-btn">
+
+                    Create Account
+
+                </button>
+
+            </form>
+
+            <div class="switch-form">
+
+                Already have an account?
+
+                <button id="showLogin">
+
+                    Sign In
+
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- Footer -->
+
+        <div class="auth-footer">
+
+            <i class="bi bi-shield-lock-fill"></i>
+
+            Secure authentication powered by VitaCare
+
+        </div>
+
+    </div>
+
+</div>

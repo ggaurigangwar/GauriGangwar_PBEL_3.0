@@ -1,0 +1,754 @@
+/* ==========================================
+        VITACARE AUTHENTICATION
+========================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap');
+
+:root {
+
+    --primary: #2563EB;
+    --secondary: #14B8A6;
+
+    --white: #FFFFFF;
+
+    --heading: #0F172A;
+
+    --text: #64748B;
+
+    --border: #E5E7EB;
+
+    --background: #F8FAFC;
+
+    --success: #22C55E;
+
+}
+
+* {
+
+    margin: 0;
+
+    padding: 0;
+
+    box-sizing: border-box;
+
+}
+
+body {
+
+    font-family: "Inter", sans-serif;
+
+}
+
+/* ==========================================
+        OVERLAY
+========================================== */
+
+.auth-overlay {
+
+    position: fixed;
+
+    inset: 0;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    background: rgba(15, 23, 42, .45);
+
+    backdrop-filter: blur(10px);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transition: .3s;
+
+    z-index: 9999;
+
+}
+
+.auth-overlay.active {
+
+    opacity: 1;
+
+    visibility: visible;
+
+}
+
+/* ==========================================
+        MODAL
+========================================== */
+
+.auth-modal {
+
+    position: relative;
+
+    width: 100%;
+    max-width: 430px;
+
+    background: #fff;
+
+    border-radius: 24px;
+
+    padding: 30px;
+
+    overflow: hidden;
+
+    box-shadow: 0 25px 80px rgba(0, 0, 0, .18);
+
+    transform: scale(.9);
+
+    transition: transform .35s ease;
+
+}
+
+.auth-logo {
+
+    text-align: center;
+
+    margin-bottom: 24px;
+
+}
+
+.auth-logo h2 {
+
+    font-size: 32px;
+
+    font-weight: 800;
+
+    color: var(--heading);
+
+    margin-bottom: 6px;
+
+}
+
+.auth-logo p {
+
+    color: var(--text-light);
+
+    font-size: 14px;
+
+}
+
+.auth-overlay.active .auth-modal {
+
+    transform: scale(1);
+
+}
+
+
+
+/* ==========================================
+        CLOSE BUTTON
+========================================== */
+
+/* ==========================================
+        CLOSE BUTTON
+========================================== */
+
+.close-modal {
+
+    position: absolute;
+
+    top: 18px;
+    right: 18px;
+
+    width: 38px;
+    height: 38px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: #F8FAFC;
+
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: all .25s ease;
+
+}
+
+.close-modal:hover {
+
+    background: #2563EB;
+
+    color: #fff;
+
+    box-shadow: 0 8px 20px rgba(37, 99, 235, .25);
+
+}
+
+/* ==========================================
+        LOGO
+========================================== */
+
+.auth-logo {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.auth-logo h2 {
+
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--heading);
+    margin-bottom: 6px;
+}
+
+.auth-logo p {
+    color: var(--text-light);
+    font-size: 14px;
+}
+
+/* ==========================================
+        HEADINGS
+========================================== */
+
+.auth-content h3 {
+
+    font-size: 21px;
+
+    font-weight: 700;
+
+    color: var(--heading);
+
+    text-align: center;
+
+    margin-bottom: 6px;
+
+}
+
+.auth-subtitle {
+
+    text-align: center;
+
+    color: var(--text);
+
+    font-size: 14px;
+
+    line-height: 1.5;
+
+    margin-bottom: 18px;
+
+}
+
+/* ==========================================
+        GOOGLE BUTTON
+========================================== */
+
+.google-btn {
+
+    width: 100%;
+
+    height: 48px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 12px;
+
+    background: #FFFFFF;
+
+    color: #1F2937;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    transition: .25s ease;
+
+}
+
+.google-btn:hover {
+
+    border-color: var(--primary);
+
+    background: #F8FBFF;
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 10px 20px rgba(37, 99, 235, .08);
+
+}
+
+.google-icon {
+
+    width: 20px;
+
+    height: 20px;
+
+    object-fit: contain;
+
+}
+
+/* ==========================================
+        DIVIDER
+========================================== */
+
+.divider {
+
+    display: flex;
+
+    align-items: center;
+
+    margin: 18px 0;
+
+}
+
+.divider::before,
+
+.divider::after {
+
+    content: "";
+
+    flex: 1;
+
+    height: 1px;
+
+    background: var(--border);
+
+}
+
+.divider span {
+
+    padding: 0 12px;
+
+    font-size: 13px;
+
+    color: #94A3B8;
+
+}
+
+/* ==========================================
+        FORM
+========================================== */
+
+.form-group {
+
+    margin-bottom: 14px;
+
+}
+
+.form-group label {
+
+    display: block;
+
+    margin-bottom: 6px;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    color: var(--heading);
+
+}
+
+.form-group input {
+
+    width: 100%;
+
+    height: 46px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 12px;
+
+    padding: 0 16px;
+
+    background: #FFFFFF;
+
+    font-size: 14px;
+
+    transition: .25s;
+
+}
+
+.form-group input::placeholder {
+
+    color: #9CA3AF;
+
+}
+
+.form-group input:focus {
+
+    outline: none;
+
+    border-color: var(--primary);
+
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, .08);
+
+}
+
+/* ==========================================
+        PASSWORD
+========================================== */
+
+.password-wrapper {
+
+    position: relative;
+
+}
+
+.password-wrapper input {
+
+    padding-right: 46px;
+
+}
+
+.toggle-password {
+
+    position: absolute;
+
+    top: 50%;
+
+    right: 14px;
+
+    transform: translateY(-50%);
+
+    border: none;
+
+    background: none;
+
+    color: #94A3B8;
+
+    font-size: 17px;
+
+    cursor: pointer;
+
+    transition: .2s;
+
+}
+
+.toggle-password:hover {
+
+    color: var(--primary);
+
+}
+
+/* ==========================================
+        LOGIN OPTIONS
+========================================== */
+
+.login-options {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin: 8px 0 18px;
+
+}
+
+.login-options label {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    font-size: 13px;
+
+    color: var(--text);
+
+    cursor: pointer;
+
+}
+
+.login-options input {
+
+    width: 16px;
+
+    height: 16px;
+
+}
+
+.login-options a {
+
+    color: var(--primary);
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+}
+
+.login-options a:hover {
+
+    text-decoration: underline;
+
+}
+
+/* ==========================================
+        BUTTON
+========================================== */
+
+.auth-btn {
+
+    width: 100%;
+
+    height: 48px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background: linear-gradient(135deg,
+            var(--primary),
+            var(--secondary));
+
+    color: #FFFFFF;
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: .25s;
+
+}
+
+.auth-btn:hover {
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 14px 28px rgba(37, 99, 235, .20);
+
+}
+
+.auth-btn:active {
+
+    transform: scale(.98);
+
+}
+
+/* ==========================================
+        SWITCH FORM
+========================================== */
+
+.switch-form {
+
+    margin-top: 18px;
+
+    text-align: center;
+
+    font-size: 14px;
+
+    color: var(--text);
+
+}
+
+.switch-form button {
+
+    background: none;
+
+    border: none;
+
+    color: var(--primary);
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    margin-left: 4px;
+
+}
+
+.switch-form button:hover {
+
+    text-decoration: underline;
+
+}
+
+/* ==========================================
+        FOOTER
+========================================== */
+
+.auth-footer {
+
+    margin-top: 20px;
+
+    padding-top: 16px;
+
+    border-top: 1px solid var(--border);
+
+    text-align: center;
+
+    font-size: 12px;
+
+    color: #94A3B8;
+
+}
+
+.auth-footer i {
+
+    color: #22C55E;
+
+    margin-right: 4px;
+
+}
+
+/* ==========================================
+        ALERT
+========================================== */
+
+.alert {
+
+    border-radius: 10px;
+
+    margin-bottom: 16px;
+
+    font-size: 13px;
+
+}
+
+
+/* ==========================================
+        FORM SWITCH
+========================================== */
+
+.auth-content {
+
+    display: none;
+
+}
+
+.auth-content.active {
+
+    display: block;
+
+}
+
+/* ==========================================
+        MODAL ANIMATION
+========================================== */
+
+.auth-modal {
+
+    animation: modalIn .30s ease;
+
+}
+
+@keyframes modalIn {
+
+    from {
+
+        opacity: 0;
+
+        transform: translateY(20px) scale(.95);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform: translateY(0) scale(1);
+
+    }
+
+}
+
+/* ==========================================
+        SCROLLBAR
+========================================== */
+
+.auth-modal::-webkit-scrollbar {
+
+    width: 6px;
+
+}
+
+.auth-modal::-webkit-scrollbar-thumb {
+
+    background: #CBD5E1;
+
+    border-radius: 20px;
+
+}
+
+/* ==========================================
+        MOBILE
+========================================== */
+
+@media (max-width:768px) {
+
+    .auth-overlay {
+
+        padding: 18px;
+
+    }
+
+    .auth-modal {
+
+        max-width: 100%;
+
+        padding: 22px;
+
+        border-radius: 18px;
+
+    }
+
+    .auth-logo img {
+
+        width: 50px;
+
+        height: 50px;
+
+    }
+
+    .auth-logo h2 {
+
+        font-size: 22px;
+
+    }
+
+    .auth-content h3 {
+
+        font-size: 20px;
+
+    }
+
+    .auth-subtitle {
+
+        font-size: 13px;
+
+    }
+
+}
+
+/* ==========================================
+        DESKTOP HEIGHT
+========================================== */
+
+@media (min-width:992px) {
+
+    .auth-modal {
+
+        max-height: 90vh;
+
+        overflow-y: auto;
+
+    }
+
+}

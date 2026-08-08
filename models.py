@@ -2,7 +2,7 @@ from datetime import datetime
 from flask_login import UserMixin
 
 from extensions import db
-from datetime import datetime, timedelta
+from datetime import timedelta
 
 
 class User(UserMixin, db.Model):

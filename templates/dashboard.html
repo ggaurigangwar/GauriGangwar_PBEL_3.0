@@ -1,22 +1,14 @@
 {% extends "base.html" %}
 
-{% block title %}Dashboard | VitaCare{% endblock %}
-
 {% block content %}
 
-<div class="dashboard-wrapper">
+{% include "components/hero.html" %}
 
-    {% include "components/hero.html" %}
+{% include "components/accuracy.html" %}
 
-    {% include "components/accuracy.html" %}
+{% include "components/commitment.html" %}
 
-    {% include "components/commitment.html" %}
+{% include "components/faq.html" %}
 
-    {% include "components/faq.html" %}
-
-</div>
 
 {% endblock %}
-
-
-    

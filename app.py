@@ -92,89 +92,111 @@ def load_user(user_id):
 
 @app.route("/")
 def home():
-    return redirect(url_for("login"))
+
+    auth = request.args.get("auth", "")
+
+    return render_template(
+        "dashboard.html",
+        auth=auth,
+        user=current_user
+    )
 
 
-@app.route("/signup", methods=["GET", "POST"])
+@app.route("/start-consultation")
+def start_consultation():
+
+    if current_user.is_authenticated:
+        return redirect(url_for("chat"))
+
+    return redirect(url_for("home"))
+
+
+@app.route("/signup", methods=["POST"])
 def signup():
 
-    if request.method == "POST":
+    name = request.form.get("name")
+    email = request.form.get("email")
+    password = request.form.get("password")
+    confirm_password = request.form.get("confirm_password")
 
-        name = request.form.get("name")
-        email = request.form.get("email")
-        password = request.form.get("password")
-        confirm_password = request.form.get("confirm_password")
+    # Check empty fields
+    if not name or not email or not password or not confirm_password:
 
-        # Check if any field is empty
-        if not name or not email or not password or not confirm_password:
-            flash("Please fill in all fields.", "danger")
-            return redirect(url_for("signup"))
+        flash("Please fill in all fields.", "danger")
 
-        # Check passwords
-        if password != confirm_password:
-            flash("Passwords do not match.", "danger")
-            return redirect(url_for("signup"))
+        return redirect(url_for("home"))
 
-        # Check existing email
-        existing_user = User.query.filter_by(email=email).first()
+    # Password match
+    if password != confirm_password:
 
-        if existing_user:
-            flash("Email already registered.", "warning")
-            return redirect(url_for("signup"))
+        flash("Passwords do not match.", "danger")
 
-        # Hash password
-        hashed_password = bcrypt.generate_password_hash(password).decode("utf-8")
+        return redirect(url_for("home"))
 
-        # Create user
-        user = User(
-            name=name,
-            email=email,
-            password=hashed_password
-        )
+    # Existing email
+    existing_user = User.query.filter_by(email=email).first()
 
-        db.session.add(user)
-        db.session.commit()
+    if existing_user:
 
-        flash("Account created successfully! Please login.", "success")
+        flash("Email already registered.", "warning")
 
-        return redirect(url_for("login"))
+        return redirect(url_for("home", auth="signup"))
 
-    return render_template("signup.html")
+    # Hash password
+    hashed_password = bcrypt.generate_password_hash(password).decode("utf-8")
+
+    # Create User
+    user = User(
+        name=name,
+        email=email,
+        password=hashed_password
+    )
+
+    db.session.add(user)
+    db.session.commit()
+
+    # Login Automatically
+    login_user(user, remember=True)
+
+    flash("Welcome to VitaCare!", "success")
+
+    return redirect(url_for("chat"))
 
 
-@app.route("/login", methods=["GET", "POST"])
+
+
+@app.route("/login", methods=["POST"])
 def login():
 
-    # If user is already logged in
+    # Already logged in
     if current_user.is_authenticated:
-        return redirect(url_for("dashboard"))
+        return redirect(url_for("chat"))
 
-    if request.method == "POST":
+    email = request.form.get("email")
+    password = request.form.get("password")
 
-        email = request.form.get("email")
-        password = request.form.get("password")
+    # Empty fields
+    if not email or not password:
 
-        # Check if fields are empty
-        if not email or not password:
-            flash("Please fill in all fields.", "danger")
-            return redirect(url_for("login"))
+        flash("Please fill in all fields.", "danger")
 
-        # Find user
-        user = User.query.filter_by(email=email).first()
+        return redirect(url_for("home", auth="login"))
 
-        # Verify password
-        if user and bcrypt.check_password_hash(user.password, password):
+    # Find user
+    user = User.query.filter_by(email=email).first()
 
-            login_user(user)
+    # Verify password
+    if user and bcrypt.check_password_hash(user.password, password):
 
-            flash("Login successful!", "success")
+        login_user(user, remember=True)
 
-            return redirect(url_for("dashboard"))
+        flash(f"Welcome back, {user.name}!", "success")
 
-        flash("Invalid email or password.", "danger")
-        return redirect(url_for("login"))
+        return redirect(url_for("chat"))
 
-    return render_template("login.html")
+    flash("Invalid email or password.", "danger")
+
+    return redirect(url_for("home"))
 
 
 @app.route("/dashboard")
@@ -222,17 +244,21 @@ def logout():
 
     logout_user()
 
-    flash("You have been logged out.", "success")
+    flash("Logged out successfully!", "success")
 
-    return redirect(url_for("login"))
+    return redirect(url_for("home"))
 
 
 
 @app.route("/chat")
 @login_required
 def chat():
-    return render_template("chat.html")
 
+    return render_template(
+        "chat.html",
+        user=current_user,
+        title="VitaCare Chat"
+    )
 
 
 @app.route("/stream", methods=["POST"])
@@ -241,7 +267,12 @@ def stream():
 
     data = request.get_json()
     question = data["message"]
+    print("Received from frontend:", question)
     clean_question = question.strip().lower()
+    print("Clean question:", clean_question)
+
+    print("Original Question:", question)
+    print("Clean Question:", clean_question)
 
     simple_responses = {
         "hi": "Hello! 👋 How can I help you with your health today?",
@@ -262,6 +293,43 @@ def stream():
 
         def generate():
             yield simple_responses[clean_question]
+
+        return Response(
+            stream_with_context(generate()),
+            mimetype="text/plain"
+        )
+
+    # Handle vague or incomplete queries
+    vague_queries = [
+        "i have a query",
+        "i have question",
+        "i have a question",
+        "query",
+        "question",
+        "help",
+        "can you help me",
+        "need help",
+        "can i ask something"
+    ]
+
+    if clean_question in vague_queries:
+
+        def generate():
+            yield (
+                "I'd be happy to help! 😊\n\n"
+                "Please describe your symptoms or ask your health-related question.\n\n"
+            )
+
+        return Response(
+            stream_with_context(generate()),
+            mimetype="text/plain"
+        )
+
+    # Handle empty message
+    if not clean_question:
+
+        def generate():
+            yield "Please enter your health-related question."
 
         return Response(
             stream_with_context(generate()),
@@ -379,9 +447,10 @@ def history():
         json=json
     )
 
-
+print("\nRegistered Routes:")
+print(app.url_map)
 if __name__ == "__main__":
     with app.app_context():
         db.create_all()
 
-    app.run(debug=True)
+    app.run(debug=True, use_reloader=False)

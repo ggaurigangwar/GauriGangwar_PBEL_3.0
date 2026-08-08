@@ -66,7 +66,7 @@ function scrollToBottom() {
 
 function isGreeting(text) {
 
-    const greetings = [
+    const greetings = new Set([
         "hi",
         "hello",
         "hey",
@@ -83,11 +83,9 @@ function isGreeting(text) {
         "good night",
         "ok",
         "okay"
-    ];
+    ]);
 
-    const message = text.trim().toLowerCase();
-
-    return greetings.some(greeting => message.includes(greeting));
+    return greetings.has(text.trim().toLowerCase());
 }
 
 
@@ -150,10 +148,10 @@ function hideTyping() {
 /* ==========================================================
    Send Message
 ========================================================== */
-
 async function sendMessage() {
 
     const question = input.value.trim();
+    console.log("Question being sent:", question);
 
     if (question === "") return;
 
@@ -198,12 +196,12 @@ if (!isGreeting(question)) {
 };
 
     const lower = question.trim().toLowerCase();
-
-    const matched = Object.keys(replies).find(key => lower.includes(key));
-
+    
+    const matched = replies[lower];
+    
     createMessage(
-    replies[matched] || "Hello! 👋 How can I help you today?",
-    "ai"
+        matched || "Hello! 👋 How can I help you today?",
+        "ai"
 );
 
     return;
@@ -330,13 +328,13 @@ sendBtn.addEventListener("click", function(){
    Suggestions
 ========================================================== */
 
-suggestions.forEach(button=>{
+suggestions.forEach(button => {
 
-    button.addEventListener("click",()=>{
+    button.addEventListener("click", () => {
 
-        input.value=button.innerText;
+        input.value = button.innerText;
 
-        input.focus();
+        sendMessage();
 
     });
 

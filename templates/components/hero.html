@@ -2,27 +2,49 @@
 
     <div class="hero-left">
 
+        <!-- Badge -->
         <span class="hero-badge">
             <i class="bi bi-heart-pulse-fill"></i>
             Personalized Healthcare Platform
         </span>
 
+        <!-- Heading -->
         <h1>
             Healthcare Guidance
             <br>
             Designed Around You
         </h1>
 
+        <!-- Description -->
         <p>
             Secure, personalized healthcare guidance designed to help you
             better understand your health and organize your healthcare journey.
         </p>
 
+        <!-- Start Consultation Button -->
+        {% if current_user.is_authenticated %}
+
         <a href="{{ url_for('chat') }}" class="start-btn">
+
             <i class="bi bi-chat-dots-fill"></i>
+
             Start Consultation
+
         </a>
 
+        {% else %}
+
+        <button type="button" class="start-btn open-auth-btn">
+
+            <i class="bi bi-chat-dots-fill"></i>
+
+            Start Consultation
+
+        </button>
+
+        {% endif %}
+
+        <!-- Features -->
         <div class="hero-features">
 
             <span>
