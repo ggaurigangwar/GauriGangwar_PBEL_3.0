@@ -13,4 +13,3 @@ openai==1.91.0
 
 tiktoken==0.9.0
 huggingface-hub==0.33.4
--e .
